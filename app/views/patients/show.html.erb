@@ -1,0 +1,21 @@
+<h1>Current Patient's</h1>
+
+<%= @patient.first_name %>
+<br>
+<%= @patient.last_name %>
+<br>
+<%= @patient.dob %>
+<br>
+<%= @patient.description %>
+<br>
+<%= @patient.gender %>
+<br>
+<%= @patient.bloodtype %>
+<br>
+<br>
+<%= link_to "Edit", edit_patient_path(@patient) %>
+<br>
+<%= link_to "Delete", patient_path(@patient), method: :delete %>
+<br>
+<br>
+<%= link_to "Home", root_path %>

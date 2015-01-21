@@ -1,0 +1,15 @@
+<h1>List of Patients</h1>
+
+<%= link_to "Add Patient", new_patient_path %>
+
+<ul>
+<% @patients.each do |patient| %>
+    <li><%= patient.first_name %></li>
+    <li><%= patient.last_name %></li>
+    <li><%= patient.dob %></li>
+    <li><%= patient.description %></li>
+    <li><%= patient.gender %></li>
+    <li><%= patient.bloodtype %></li>
+    <%= link_to "Show", patient_path(patient) %>
+<% end %>
+</ul>
