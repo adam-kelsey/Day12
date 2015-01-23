@@ -1,13 +1,20 @@
 class PatientsController < ApplicationController
+  def index
+    @hospital = Hospital.find params[:hospital_id]
+    @patients = @hospital.patients
+  end
+
   def new
-    @patient = Patient.new
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = @hospital.patients.new
   end
 
   def create
-    @patient = Patient.create patient_params
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = @hospital.patients.create patient_params
     if @patient.save
       flash[:notice] = 'Patient was successfully created'
-      redirect_to root_path
+      redirect_to hospital_patients_path
     else
       flash[:error] = 'Patient was NOT saved.'
       render :new
@@ -15,23 +22,27 @@ class PatientsController < ApplicationController
   end
 
   def show
-    @patient = Patient.find params[:id]
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = @hospital.patients.find params[:id]
   end
 
   def edit
-    @patient = Patient.find params[:id]
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = @hospital.patients.find params[:id]
   end
 
   def update
-    @patient = Patient.find params[:id]
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = @hospital.patients.find params[:id]
     @patient.update_attributes patient_params
-    redirect_to root_path
+    redirect_to hospital_patients_path
   end
 
   def destroy
-    @patient = Patient.find params[:id]
-    @patient.delete
-    redirect_to root_path
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = @hospital.patients.find params[:id]
+    @patient.destroy
+    redirect_to hospital_patients_path
   end
 
   private

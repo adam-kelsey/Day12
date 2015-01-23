@@ -1,0 +1,12 @@
+<h1>Hospital</h1>
+
+<strong><h2><%= @hospital.hospital_name %></h2></strong>
+<br>
+<%= link_to "Edit", edit_hospital_path(@hospital) %>
+<%= link_to "Delete", hospital_path(@hospital), method: 
+:delete %>
+<br>
+<br>
+<%= link_to "View Patients", hospital_patients_path(@hospital) %>
+<br>
+<%= link_to "Home", root_path %>

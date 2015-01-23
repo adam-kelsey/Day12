@@ -5,6 +5,8 @@
 <ul>
   <% @hospitals.each do |h| %>
   <li><%= h.hospital_name %></li>
-  <%= link_to "Show", hospital_path(h) %>
+  <%= link_to "Show", hospital_path(hospital) %>
   <% end %>
 </ul>
+
+<!-- make sure patient_path is correct -->

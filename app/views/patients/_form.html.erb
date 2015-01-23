@@ -1,4 +1,4 @@
-<%= form_for @patient do |p| %>
+<%= form_for [@hospital, @patient] do |p| %>
   <% if @patient.errors.any? %>
     <% @patient.errors.full_messages.each do |message| %>
     <%= message %>

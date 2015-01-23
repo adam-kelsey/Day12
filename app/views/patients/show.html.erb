@@ -13,9 +13,12 @@
 <%= @patient.bloodtype %>
 <br>
 <br>
-<%= link_to "Edit", edit_patient_path(@patient) %>
+<%= link_to "View Medications", hospital_patient_medications_path(@hospital, @patient) %>
 <br>
-<%= link_to "Delete", patient_path(@patient), method: :delete %>
+
+<%= link_to "Edit", edit_hospital_patient_path(@hospital, @patient) %>
+<br>
+<%= link_to "Delete", hospital_patient_path(@hospital, @patient), method: :delete %>
 <br>
 <br>
-<%= link_to "Home", root_path %>
+<%= link_to "Back", hospital_patients_path %>

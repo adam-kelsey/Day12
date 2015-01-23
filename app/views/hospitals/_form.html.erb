@@ -1,0 +1,19 @@
+<h1>List of Hospitals</h1>
+
+<%= form_for @hospital do |p| %>
+  <% if @hospital.errors.any? %>
+    <% @hospital.errors.full_messages.each do |message| %>
+    <%= message %>
+    <br>
+    <br>
+    <% end %>
+  <% end %>
+
+  <%= p.label :hospital_name %>
+  <%= p.text_field :hospital_name %>
+  <br>
+  <%= p.submit %>
+  <br>
+  <br>
+  <%= link_to "Cancel", root_path %>
+  <% end %>

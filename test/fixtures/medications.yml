@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  medication_name: MyString
+  medication_dosage: 1
+
+two:
+  medication_name: MyString
+  medication_dosage: 1
