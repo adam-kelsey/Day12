@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126165706) do
+ActiveRecord::Schema.define(version: 20150126200624) do
 
   create_table "doctors", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20150126165706) do
     t.integer  "doctorable_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "hospital_doctors", force: :cascade do |t|
+    t.integer  "hospital_id"
+    t.integer  "doctor_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "hospitals", force: :cascade do |t|
@@ -36,6 +43,13 @@ ActiveRecord::Schema.define(version: 20150126165706) do
     t.string   "patient_id"
   end
 
+  create_table "patient_doctors", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "doctor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -46,6 +60,15 @@ ActiveRecord::Schema.define(version: 20150126165706) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "hospital_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "score"
+    t.text     "comment"
+    t.integer  "ratable_id"
+    t.string   "ratable_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

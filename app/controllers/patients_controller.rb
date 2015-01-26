@@ -5,7 +5,7 @@ class PatientsController < ApplicationController
   end
 
   def new
-    @doctors = Doctor.all
+    # @doctors = @patient.doctors
     @hospital = Hospital.find params[:hospital_id]
     @patient = @hospital.patients.new
   end
@@ -25,12 +25,13 @@ class PatientsController < ApplicationController
   def show
     @hospital = Hospital.find params[:hospital_id]
     @patient = @hospital.patients.find params[:id]
+    @doctors = @patient.doctors
   end
 
   def edit
-    @doctors = Doctor.all
     @hospital = Hospital.find params[:hospital_id]
     @patient = @hospital.patients.find params[:id]
+    # @doctors = @patient.doctors
   end
 
   def update

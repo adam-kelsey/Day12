@@ -11,3 +11,15 @@
 %br
 = link_to "Delete", doctor_path(@doctor), method: :delete
 %br
+- @ratings.each do |r|
+  = r.score
+  = r.comment
+  %br
+= form_for @rating, url: create_rating_doctor_path(@doctor) do |f|
+  = f.label :score
+  = f.text_field :score
+  %br
+  = f.label :comment
+  = f.text_area :comment
+  %br
+  = f.submit

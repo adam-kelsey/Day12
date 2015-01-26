@@ -9,6 +9,10 @@
   = d.label :practice
   = d.text_field :practice
   %br
+  - @hospitals.each do |p|
+    = check_box_tag 'doctor[hospital_ids][]', p.id, @doctor.hospitals.include?(p)
+    = p.hospital_name
+    %br
   = d.submit
 
 = link_to "Cancel", :back
