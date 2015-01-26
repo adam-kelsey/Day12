@@ -1,0 +1,14 @@
+= form_for @doctor do |d|
+  - if @doctor.errors.any?
+    - @doctor.errors.full_messages.each do |message|
+      = message
+      %br
+  = d.label :name
+  = d.text_field :name
+  %br
+  = d.label :practice
+  = d.text_field :practice
+  %br
+  = d.submit
+
+= link_to "Cancel", :back

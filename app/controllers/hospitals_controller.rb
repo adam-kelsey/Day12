@@ -5,6 +5,7 @@ class HospitalsController < ApplicationController
 
   def new
     @hospital = Hospital.new
+    @doctors = Doctor.all
   end
 
   def create
@@ -18,6 +19,7 @@ class HospitalsController < ApplicationController
 
   def edit
     @hospital = Hospital.find params[:id]
+    @doctors = Doctor.all
   end
 
   def update

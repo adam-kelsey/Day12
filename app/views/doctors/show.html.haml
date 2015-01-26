@@ -1,0 +1,13 @@
+%br
+%br
+= @doctor.name
+%br
+= @doctor.practice
+%br
+%br
+= link_to "Edit", edit_doctor_path(@doctor)
+%br
+= link_to "Back", doctors_path
+%br
+= link_to "Delete", doctor_path(@doctor), method: :delete
+%br

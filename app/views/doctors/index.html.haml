@@ -1,0 +1,11 @@
+= link_to "Add Doctor", new_doctor_path\
+%br
+%br
+- @doctors.each do |doctor|
+  = doctor.name
+  %br
+  = doctor.practice
+  %br
+  = link_to "View Doctor", doctor_path(doctor)
+  %br
+  %br

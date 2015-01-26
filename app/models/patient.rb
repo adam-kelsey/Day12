@@ -23,6 +23,7 @@ class Patient < ActiveRecord::Base
     ["O-", "O-"]
   ]
 
+  has_many :doctors, as: :doctorable
   belongs_to :hospital
   has_many :medications, dependent: :destroy
 end
