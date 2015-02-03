@@ -1,0 +1,12 @@
+%h1 Medication
+= @medication.medication_name
+%br/
+= @medication.medication_dosage
+%br/
+%br/
+= link_to "Edit", edit_medication_path(@medication)
+%br/
+= link_to "Delete", medication_path(@medication), method: :delete
+%br/
+%br/
+/ = link_to "Back", medication_path

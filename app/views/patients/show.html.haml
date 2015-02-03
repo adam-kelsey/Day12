@@ -1,0 +1,27 @@
+%h1 Current Patient's Information
+= @patient.first_name
+%br/
+= @patient.last_name
+%br/
+= @patient.dob
+%br/
+= @patient.description
+%br/
+= @patient.gender
+%br/
+= @patient.bloodtype
+%br
+%br
+%ul
+  - @patient.medications.each do |m|
+    %li
+      =m.medication_name
+      =m.medication_dosage
+%br/
+%br/
+= link_to "Edit", edit_hospital_patient_path(@hospital, @patient)
+%br/
+= link_to "Delete", hospital_patient_path(@hospital, @patient), method: :delete
+%br/
+%br/
+= link_to "Back", hospital_patients_path

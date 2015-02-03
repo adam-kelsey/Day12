@@ -1,0 +1,10 @@
+/ %h1 Patient Medication Information
+/ = link_to "Add Medication", new_medication_path
+/ %ul
+/   - @medications.each do |m|
+/     %li= m.medication_name
+/     %li= m.medication_dosage
+/     = link_to "Show Medication", medication_path(m)
+/   %br/
+/   %br/
+/   = link_to :back

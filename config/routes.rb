@@ -9,25 +9,25 @@ Rails.application.routes.draw do
       post :create_rating
     end
   end
-  resources :hospitals
-  resources :patients
-  resources :visits
-  resources :medications
 
   resources :hospitals do
     member do
       post :create_rating
     end
-    resources :patients
-  end
-  
-  resources :doctors do
-    resources :hospitals do
-      resources :patients do
-        resources :medications
+
+    resources :patients do
+      member do
+        patch :waiting_room_patient
+        patch :checkup_patient
+        patch :xray_patient
+        patch :surgery_patient
+        patch :bill_pay_patient
+        patch :discharge_patient
       end
     end
   end
+
+  resources :medications
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,15 @@
+%h1 List of Hospitals
+= link_to "Add Hospital", new_hospital_path
+%ul
+  - @hospitals.each do |h|
+    %li= h.hospital_name
+    = link_to "Show", hospital_path(h)
+
+%h1 List of Medications
+= link_to "Add Medication", new_medication_path
+%ul
+  - @medications.each do |m|
+    %li
+      = m.medication_name
+      = m.medication_dosage
+      = link_to "Show", medication_path(m)
