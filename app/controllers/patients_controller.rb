@@ -12,8 +12,13 @@ class PatientsController < ApplicationController
     :discharge_patient
   ]
   def index
+    if !params[:q].blank?
+      @patients = Patient.where("first_name LIKE ? OR last_name LIKE ? OR description LIKE ? OR dob LIKE ? OR gender LIKE ? OR bloodtype LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+    else
+      @patients = Patient.all
+    end
     @hospital = Hospital.find params[:hospital_id]
-    @patients = @hospital.patients
+    # @patients = @hospital.patients
   end
 
   def new

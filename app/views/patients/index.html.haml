@@ -1,3 +1,10 @@
+= form_tag hospital_patients_path(@hospital), method: :get, class: "navbar-form", role: "search" do
+  .input-group
+    = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Patients"
+    .input-group-btn
+      %button.btn.btn-default{:style => "width:40px;"}
+        %i.glyphicon.glyphicon-search
+
 %h1 List of Patients
 = link_to "Add Patient", new_hospital_patient_path(@hospital)
 %ul

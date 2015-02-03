@@ -1,6 +1,10 @@
 class MedicationsController < ApplicationController
   def index
-    @medications = Medication.all
+    if !params[:q].blank?
+      @medications = Medication.where("medication_name LIKE ?", "%#{params[:q]}%")
+    else
+      @medications = Medication.all
+    end
     # @hospital = Hospital.find params[:hospital_id]
     # @patient = @hospital.patients.find params[:patient_id]
     # @medications = @patient.medications
