@@ -6,9 +6,20 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    %link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %script{:src => "//netdna.bootstrapcdn.com/boostrap/3.0.3/js/bootstrap.min.js"}
   %body
     = link_to "Home", root_path, class: "btn btn-primary"
     = link_to "Doctors", doctors_path, class: "btn btn-default"
     / %img{ src: "/assets/Hospital.jpg", class: "img-responsive", alt: "Responsive image" }
-    = yield
-    = render 'home/searchbars'
+    .container.body-content
+      .row
+        .col-md-12
+          - if notice
+            .alert.alert-success{class: "testname", role: "alert"}
+              = notice
+          - if alert
+            .alert.alert-danger{class: "testname", role: "alert"}
+              = alert
+          = yield
+          = render 'home/searchbars'

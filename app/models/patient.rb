@@ -28,7 +28,6 @@ class Patient < ActiveRecord::Base
   has_many :medications, through: :patient_medications
   has_many :patient_medications
   belongs_to :hospital
-  has_many :medications, dependent: :destroy
 
     # :waiting_room_patient,
     # :checkup_patient,

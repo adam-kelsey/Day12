@@ -1,10 +1,10 @@
 %h1 List of Hospitals
-= form_tag hospitals_path, method: :get, class: "navbar-form", role: "search" do
-  .input-group
-    = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Hospitals"
-    .input-group-btn
-      %button.btn.btn-default{:style => "width:40px;"}
-        %i.glyphicon.glyphicon-search
+/ = form_tag hospitals_path, method: :get, class: "navbar-form", role: "search" do
+/   .input-group
+/     = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Hospitals"
+/     .input-group-btn
+/       %button.btn.btn-default{:style => "width:40px;"}
+/         %i.glyphicon.glyphicon-search
 = link_to "Add Hospital", new_hospital_path
 %ul
   - @hospitals.each do |h|
@@ -12,12 +12,12 @@
     = link_to "Show", hospital_path(h)
 
 %h1 List of Medications
-= form_tag medications_path, method: :get, class: "navbar-form", role: "search" do
-  .input-group
-    = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Medications"
-    .input-group-btn
-      %button.btn.btn-default{:style => "width:40px;"}
-        %i.glyphicon.glyphicon-search
+/ = form_tag medications_path, method: :get, class: "navbar-form", role: "search" do
+/   .input-group
+/     = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Medications"
+/     .input-group-btn
+/       %button.btn.btn-default{:style => "width:40px;"}
+/         %i.glyphicon.glyphicon-search
         
 = link_to "Add Medication", new_medication_path
 %ul
