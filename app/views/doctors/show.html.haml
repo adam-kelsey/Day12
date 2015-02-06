@@ -1,25 +1,28 @@
-%br
-%br
-= @doctor.name
-%br
-= @doctor.practice
-%br
-%br
-= link_to "Edit", edit_doctor_path(@doctor)
-%br
-= link_to "Back", doctors_path
-%br
-= link_to "Delete", doctor_path(@doctor), method: :delete
-%br
-- @ratings.each do |r|
-  = r.score
-  = r.comment
-  %br
-= form_for @rating, url: create_rating_doctor_path(@doctor) do |f|
-  = f.label :score
-  = f.text_field :score
-  %br
-  = f.label :comment
-  = f.text_area :comment
-  %br
-  = f.submit
+.container
+  .row
+    .col-md-6
+    .col-md-6.view-doc
+      %h1 Doctor Information
+      = @doctor.name
+      %br
+      = @doctor.practice
+      %br
+      %br
+      = link_to "Edit", edit_doctor_path(@doctor), class: "btn btn-success"
+      = link_to "Delete", doctor_path(@doctor), method: :delete, class: "btn btn-danger"
+      %br
+      %br
+      - @ratings.each do |r|
+        = r.score
+        = r.comment
+        %br
+      = form_for @rating, url: create_rating_doctor_path(@doctor) do |f|
+        = f.label :score
+        = f.text_field :score
+        %br
+        = f.label :comment
+        = f.text_area :comment
+        %br
+        = f.submit
+        %br
+        = link_to "Back", doctors_path, class: "btn btn-danger"

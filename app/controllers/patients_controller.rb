@@ -43,7 +43,7 @@ class PatientsController < ApplicationController
 
   def show
     @hospital = Hospital.find params[:hospital_id]
-    @patient = @hospital.patients.find params[:id]
+    @patient = Patient.find params[:id]
     @doctors = @patient.doctors
   end
 
@@ -71,32 +71,32 @@ class PatientsController < ApplicationController
 
   def waiting_room_patient
     @patient.wait!
-    redirect_to hospital_patients_path
+    redirect_to hospital_patient_path
   end
 
   def checkup_patient
     @patient.exam!
-    redirect_to hospital_patients_path
+    redirect_to hospital_patient_path
   end
 
   def xray_patient
     @patient.scan!
-    redirect_to hospital_patients_path
+    redirect_to hospital_patient_path
   end
 
   def surgery_patient
     @patient.operation!
-    redirect_to hospital_patients_path
+    redirect_to hospital_patient_path
   end
 
   def bill_pay_patient
     @patient.pay!
-    redirect_to hospital_patients_path
+    redirect_to hospital_patient_path
   end
 
   def discharge_patient
     @patient.leave!
-    redirect_to hospital_patients_path
+    redirect_to hospital_patient_path
   end
 
   private

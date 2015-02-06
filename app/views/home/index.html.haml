@@ -1,28 +1,20 @@
-%h1 List of Hospitals
-/ = form_tag hospitals_path, method: :get, class: "navbar-form", role: "search" do
-/   .input-group
-/     = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Hospitals"
-/     .input-group-btn
-/       %button.btn.btn-default{:style => "width:40px;"}
-/         %i.glyphicon.glyphicon-search
-= link_to "Add Hospital", new_hospital_path
-%ul
-  - @hospitals.each do |h|
-    %li= h.hospital_name
-    = link_to "Show", hospital_path(h)
+.container
+  .row
+    .col-md-6
+    .col-md-6.home-index
+      %h1.home List of Hospitals
+      = link_to "Add Hospital", new_hospital_path
+      %ul
+        - @hospitals.each do |h|
+          %li= h.hospital_name
+          = link_to "Show", hospital_path(h)
 
-%h1 List of Medications
-/ = form_tag medications_path, method: :get, class: "navbar-form", role: "search" do
-/   .input-group
-/     = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Medications"
-/     .input-group-btn
-/       %button.btn.btn-default{:style => "width:40px;"}
-/         %i.glyphicon.glyphicon-search
-        
-= link_to "Add Medication", new_medication_path
-%ul
-  - @medications.each do |m|
-    %li
-      = m.medication_name
-      = m.medication_dosage
-      = link_to "Show", medication_path(m)
+      %h1.home List of Medications
+
+      = link_to "Add Medication", new_medication_path
+      %ul
+        - @medications.each do |m|
+          %li
+            = m.medication_name
+            = m.medication_dosage
+            = link_to "Show", medication_path(m)

@@ -1,18 +1,23 @@
-= form_for @doctor do |d|
-  - if @doctor.errors.any?
-    - @doctor.errors.full_messages.each do |message|
-      = message
-      %br
-  = d.label :name
-  = d.text_field :name
-  %br
-  = d.label :practice
-  = d.text_field :practice
-  %br
-  - @hospitals.each do |p|
-    = check_box_tag 'doctor[hospital_ids][]', p.id, @doctor.hospitals.include?(p)
-    = p.hospital_name
-    %br
-  = d.submit
+.container
+  .row
+    .col-md-6
+    .col-md-6.doctor-form
+      %h1 #{params[:action].capitalize} Doctor
+      = form_for @doctor do |d|
+        - if @doctor.errors.any?
+          - @doctor.errors.full_messages.each do |message|
+            = message
+            %br
+        = d.label :name
+        = d.text_field :name
+        %br
+        = d.label :practice
+        = d.text_field :practice
+        %br
+        - @hospitals.each do |p|
+          = check_box_tag 'doctor[hospital_ids][]', p.id, @doctor.hospitals.include?(p)
+          = p.hospital_name
+          %br
+        = d.submit
 
-= link_to "Cancel", :back, class: "btn btn-danger"
+      = link_to "Cancel", :back, class: "btn btn-danger"

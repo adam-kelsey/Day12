@@ -1,23 +1,17 @@
-/ %h1 List of Doctors
-/ = form_tag doctors_path, method: :get, class: "navbar-form", role: "search" do
-/   .input-group
-/     = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Doctors"
-/     .input-group-btn
-/       %button.btn.btn-default{:style => "width:40px;"}
-/         %i.glyphicon.glyphicon-search
-%br
-= link_to "Add Doctor", new_doctor_path\
-%br
-%br
-- @doctors.each do |doctor|
-  = doctor.name
-  %br
-  = doctor.practice
-  %br
-  = link_to "View Doctor", doctor_path(doctor)
-  %br
-  %br
-= link_to "Back", :back
-%br
-%br
-= link_to "Home", root_path
+.container
+  .row
+    .col-md-6
+    .col-md-6.doc-index
+      %h1.doctor-show List of Doctors
+      = link_to "Add Doctor", new_doctor_path\
+      %br
+      %br
+      - @doctors.each do |doctor|
+        = doctor.name
+        %br
+        = doctor.practice
+        %br
+        = link_to "View Doctor", doctor_path(doctor)
+        %br
+        %br
+      = link_to "Back", :back, class: "btn btn-danger"

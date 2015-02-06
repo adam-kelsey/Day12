@@ -1,5 +1,97 @@
-.sidebar {
+.backgroundimg {
+  background-image: url("/assets/simple-background.jpg");
+  content: "";
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; 
+}
+
+.home-index {
+  border: solid 1px #CCCCCC;
+  background-color: darkgrey;
+  /*background-color: #f9f9f9;*/
+  display: table;
+  padding: 4px;
+  margin: 4px 4px 0px 4px;
+  font-size: 110%;
+  color: crimson;
+  font-family: sans-serif;
+  font-style: italic;
   position: absolute;
   top: 10px;
-  right: 50px;
+  left: 100px;
+}
+
+.doc-index {
+  border: solid 1px #CCCCCC;
+  background-color: darkgrey;
+  /*background-color: #f9f9f9;*/
+  display: table;
+  padding: 4px;
+  margin: 4px 4px 0px 4px;
+  font-size: 110%;
+  color: crimson;
+  font-family: sans-serif;
+  font-style: italic;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+.doctor-form {
+  border: solid 1px #CCCCCC;
+  background-color: darkgrey;
+  /*background-color: #f9f9f9;*/
+  display: table;
+  padding: 4px;
+  margin: 4px 4px 0px 4px;
+  font-size: 110%;
+  color: crimson;
+  font-family: sans-serif;
+  font-style: italic;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+.view-doc {
+  border: solid 1px #CCCCCC;
+  background-color: darkgrey;
+  /*background-color: #f9f9f9;*/
+  display: table;
+  padding: 4px;
+  margin: 4px 4px 0px 4px;
+  font-size: 110%;
+  color: crimson;
+  font-family: sans-serif;
+  font-style: italic;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+.show-hospital {
+  border: solid 1px #CCCCCC;
+  background-color: darkgrey;
+  /*background-color: #f9f9f9;*/
+  display: table;
+  padding: 4px;
+  margin: 4px 4px 0px 4px;
+  font-size: 110%;
+  color: crimson;
+  font-family: sans-serif;
+  font-style: italic;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0px;
+  right: 10px;
 }

@@ -7,43 +7,22 @@
 
 %h1 List of Patients
 = link_to "Add Patient", new_hospital_patient_path(@hospital)
-%ul
-  - @patients.each do |p|
-    %li.patientsclass{ class: patient_current_state?(p)}
-      ***
-      = p.workflow_state.upcase
-      ***
-      = p.first_name
-      = p.last_name
-      = p.dob
-      = p.description
-      = p.gender
-      = p.bloodtype
-      %br
-      - if p.waiting_room?
-        = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Xray", xray_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, p), method: :patch
-      - if p.checkup?
-        = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Xray", xray_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, p), method: :patch
-      - if p.xray?
-        = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, p), method: :patch
-      - if p.surgery?
-        = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Xray", xray_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, p), method: :patch
-        = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, p), method: :patch
-      - if p.bill_pay?
-        = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, p), method: :patch
 
-    = link_to "Show", hospital_patient_path(@hospital, p)
+.row
+- a = 0
+- b = 1
+%ul{class: "patient_list"}
+  - @patients.each_slice(10) do |row|
+    %li{class: "section_#{a+1}"}
+      - a = a + 1
+      - row.each do |patient|
+        .col-md-12
+          = link_to patient[:first_name], hospital_patient_path(@hospital, patient)
+          = patient.last_name
+          %br
+%ul{class: "link_list"}
+  - a.times do
+    %li{class: "link_#{b}"}
+      %a{class: "link_#{b}", number: b}
+        = "page #{b}"
+    - b += 1

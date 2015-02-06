@@ -1,19 +1,23 @@
-%h1 Hospital
-%strong
-  %h2= @hospital.hospital_name
-%br/
-= link_to "Edit", edit_hospital_path(@hospital)
-= link_to "Delete", hospital_path(@hospital), method: :delete
-%br/
-%br/
-= link_to "View Patients", hospital_patients_path(@hospital)
-%br/
-= link_to "Home", root_path
-= form_for @rating, url: create_rating_hospital_path(@hospital) do |f|
-  = f.label :score
-  = f.text_field :score
-  %br/
-  = f.label :comment
-  = f.text_area :comment
-  %br/
-  = f.submit
+.container
+  .row
+    .col-md-6
+    .col-md-6.show-hospital
+      %h1 Hospital
+      %strong
+        %h2= @hospital.hospital_name
+      %br/
+      = link_to "View Patients", hospital_patients_path(@hospital)
+      %br/
+      %br/
+      = link_to "Edit", edit_hospital_path(@hospital), class: "btn btn-success"
+      = link_to "Delete", hospital_path(@hospital), method: :delete, class: "btn btn-danger"
+      %br/
+      %br
+      = form_for @rating, url: create_rating_hospital_path(@hospital) do |f|
+        = f.label :score
+        = f.text_field :score
+        %br/
+        = f.label :comment
+        = f.text_area :comment
+        %br/
+        = f.submit
