@@ -1,28 +1,32 @@
-= form_tag hospital_patients_path(@hospital), method: :get, class: "navbar-form", role: "search" do
-  .input-group
-    = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Patients"
-    .input-group-btn
-      %button.btn.btn-default{:style => "width:40px;"}
-        %i.glyphicon.glyphicon-search
+.container
+  .row
+    .col-md-6
+    .col-md-6.patient-index
+      = form_tag hospital_patients_path(@hospital), method: :get, class: "navbar-form", role: "search" do
+        .input-group
+          = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Patients"
+          .input-group-btn
+            %button.btn.btn-default{:style => "width:40px;"}
+              %i.glyphicon.glyphicon-search
 
-%h1 List of Patients
-= link_to "Add Patient", new_hospital_patient_path(@hospital)
+      %h1 List of Patients
+      = link_to "Add Patient", new_hospital_patient_path(@hospital)
 
-.row
-- a = 0
-- b = 1
-%ul{class: "patient_list"}
-  - @patients.each_slice(10) do |row|
-    %li{class: "section_#{a+1}"}
-      - a = a + 1
-      - row.each do |patient|
-        .col-md-12
-          = link_to patient[:first_name], hospital_patient_path(@hospital, patient)
-          = patient.last_name
-          %br
-%ul{class: "link_list"}
-  - a.times do
-    %li{class: "link_#{b}"}
-      %a{class: "link_#{b}", number: b}
-        = "page #{b}"
-    - b += 1
+      .row
+      - a = 0
+      - b = 1
+      %ul{class: "patient_list"}
+        - @patients.each_slice(10) do |row|
+          %li{class: "section_#{a+1}"}
+            - a = a + 1
+            - row.each do |patient|
+              .col-md-12
+                = link_to patient[:first_name], hospital_patient_path(@hospital, patient)
+                = patient.last_name
+                %br
+      %ul{class: "link_list"}
+        - a.times do
+          %li{class: "link_#{b}"}
+            %a{class: "link_#{b}", number: b}
+              = "page #{b}"
+          - b += 1

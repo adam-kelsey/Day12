@@ -1,12 +1,16 @@
-%h1 Medication
-= @medication.medication_name
-%br/
-= @medication.medication_dosage
-%br/
-%br/
-= link_to "Edit", edit_medication_path(@medication)
-%br/
-= link_to "Delete", medication_path(@medication), method: :delete
-%br/
-%br/
-/ = link_to "Back", medication_path
+.container
+  .row
+    .col-md-6
+    .col-md-6.medication-show
+      %h1 Medication Information
+      = @medication.medication_name
+      %br/
+      = @medication.medication_dosage
+      %br/
+      %br/
+      = link_to "Edit", edit_medication_path(@medication), class: "btn btn-success"
+      = link_to "Delete", medication_path(@medication), method: :delete, class: "btn btn-danger"
+      %br/
+      %br/
+      %br
+      = link_to "Back", :back, class: "btn btn-danger"

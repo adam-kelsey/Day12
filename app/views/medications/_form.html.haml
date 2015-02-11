@@ -1,16 +1,21 @@
-= form_for @medication do |p|
-  - if @medication.errors.any?
-    - @patient.errors.full_messages.each do |message|
-      = message
-      %br/
-      %br/
-  = p.label :medication_name
-  = p.text_field :medication_name
-  %br/
-  = p.label :medication_dosage
-  = p.text_field :medication_dosage
-  %br/
-  = p.submit
-  %br/
-  %br/
-/ = link_to "Cancel", medication_path
+.container
+  .row
+    .col-md-6
+    .col-md-6.medication-form
+      %h1 #{params[:action].capitalize} Medication
+      = form_for @medication do |p|
+        - if @medication.errors.any?
+          - @patient.errors.full_messages.each do |message|
+            = message
+            %br/
+            %br/
+        = p.label :medication_name
+        = p.text_field :medication_name
+        %br/
+        = p.label :medication_dosage
+        = p.text_field :medication_dosage
+        %br/
+        = p.submit
+        %br/
+        %br/
+      = link_to "Cancel", :back, class: "btn btn-danger"

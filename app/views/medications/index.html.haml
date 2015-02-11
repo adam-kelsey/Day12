@@ -1,17 +1,21 @@
-%h1 Medication Information
-/ = form_tag medications_path, method: :get, class: "navbar-form", role: "search" do
-/   .input-group
-/     = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Medications"
-/     .input-group-btn
-/       %button.btn.btn-default{:style => "width:40px;"}
-/         %i.glyphicon.glyphicon-search
-        
-= link_to "Add Medication", new_medication_path
-%ul
-  - @medications.each do |m|
-    %li= m.medication_name
-    %li= m.medication_dosage
-    = link_to "Show Medication", medication_path(m)
-  %br/
-  %br/
-  = link_to :back
+.container
+  .row
+    .col-md-6
+    .col-m6-6.medication-index
+      %h1 Medication Information
+      / = form_tag medications_path, method: :get, class: "navbar-form", role: "search" do
+      /   .input-group
+      /     = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Medications"
+      /     .input-group-btn
+      /       %button.btn.btn-default{:style => "width:40px;"}
+      /         %i.glyphicon.glyphicon-search
+              
+      = link_to "Add Medication", new_medication_path
+      %ul
+        - @medications.each do |m|
+          %li= m.medication_name
+          %li= m.medication_dosage
+          = link_to "Show Medication", medication_path(m)
+        %br/
+        %br/
+      = link_to "Cancel", :back, class: "btn btn-danger"

@@ -1,55 +1,58 @@
 / PUT ALL THE WORKFLOW STATES IN A PARTIAL
 
-%h1 Current Patient's Information
-%ul
-  %li.patientsclass{ class: patient_current_state?(@patient)}
-    ***
-    = @patient.workflow_state.upcase
-    ***
-    = @patient.first_name
-    = @patient.last_name
-    = @patient.dob
-    = @patient.description
-    = @patient.gender
-    = @patient.bloodtype
-    %br
-    - if @patient.waiting_room?
-      = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Xray", xray_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
-    - if @patient.checkup?
-      = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Xray", xray_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
-    - if @patient.xray?
-      = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
-    - if @patient.surgery?
-      = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Xray", xray_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, @patient), method: :patch
-      = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
-    - if @patient.bill_pay?
-      = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
-%br
-%br
-%ul
-  - @patient.medications.each do |m|
-    %li
-      =m.medication_name
-      =m.medication_dosage
-%br/
-%br/
-= link_to "Edit", edit_hospital_patient_path(@hospital, @patient)
-%br/
-= link_to "Delete", hospital_patient_path(@hospital, @patient), method: :delete
-%br/
-%br/
-= link_to "Back", hospital_patients_path
+.container
+  .row
+    .col-md-6
+    .col-md-6.patient-show
+      %h1 Current Patient's Information
+      %ul
+        %li.patientsclass{ class: patient_current_state?(@patient)}
+          ***
+          = @patient.workflow_state.upcase
+          ***
+          = @patient.first_name
+          = @patient.last_name
+          = @patient.dob
+          = @patient.description
+          = @patient.gender
+          = @patient.bloodtype
+          %br
+          - if @patient.waiting_room?
+            = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Xray", xray_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
+          - if @patient.checkup?
+            = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Xray", xray_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
+          - if @patient.xray?
+            = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
+          - if @patient.surgery?
+            = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Xray", xray_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, @patient), method: :patch
+            = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
+          - if @patient.bill_pay?
+            = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
+      %br
+      %br
+      %ul
+        - @patient.medications.each do |m|
+          %li
+            =m.medication_name
+            =m.medication_dosage
+      %br/
+      %br/
+      = link_to "Edit", edit_hospital_patient_path(@hospital, @patient), class: "btn btn-success"
+      = link_to "Delete", hospital_patient_path(@hospital, @patient), method: :delete, class: "btn btn-danger"
+      %br/
+      %br/
+      = link_to "Back", hospital_patients_path, class: "btn btn-danger"

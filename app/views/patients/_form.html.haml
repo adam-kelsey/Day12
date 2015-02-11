@@ -1,46 +1,51 @@
-= form_for [@hospital, @patient] do |p|
-  - if @patient.errors.any?
-    - @patient.errors.full_messages.each do |message|
-      = message
-      %br/
-      %br/
-  .form-group
-    = p.label :first_name
-    = p.text_field :first_name, class: "form-control first-name"
-    %br/
-  .form-group
-    = p.label :last_name
-    = p.text_field :last_name, class: "form-control last-name"
-    %br/
-  .form-group
-    = p.label :dob
-    = p.date_select :dob, :start_year=>1915, :end_year=>2015, class: "form-control date-of-birth"
-    %br/
-  .form-group
-    = p.label :description
-    = p.text_field :description, class: "form-control description"
-    %br/
-  .form-group
-    = p.label :gender
-    = p.radio_button(:gender, "male")
-    = p.label(:gender, "male")
-    = p.radio_button(:gender, "female")
-    = p.label(:gender, "female")
-    %br/
-  .form-group
-    = p.label :bloodtype
-    = p.select :bloodtype, options_for_select(Patient::BLOODTYPE_OPTIONS, p.object.bloodtype), include_blank: "--- Select ---", class: "form-control blood-type"
-  %br
-  .checkbox
-    = hidden_field_tag 'patient[medication_ids][]', ''
-    - @medications.each do |med|
-      %label
-        = check_box_tag 'patient[medication_ids][]', med.id, @patient.medications.include?(med)
-        = med.medication_name
-  = p.submit "Submit", class: "btn btn-primary disabled submit-stuff"
-  %br/
-  %br/
-  = link_to "Cancel", hospital_patients_path
+.container
+  .row
+    .col-md-6
+    .col-md-6.patient-form
+      %h1 #{params[:action].capitalize} Patient
+      = form_for [@hospital, @patient] do |p|
+        - if @patient.errors.any?
+          - @patient.errors.full_messages.each do |message|
+            = message
+            %br/
+            %br/
+        .form-group
+          = p.label :first_name
+          = p.text_field :first_name, class: "form-control first-name"
+          %br/
+        .form-group
+          = p.label :last_name
+          = p.text_field :last_name, class: "form-control last-name"
+          %br/
+        .form-group
+          = p.label :dob
+          = p.date_select :dob, :start_year=>1915, :end_year=>2015, class: "form-control date-of-birth"
+          %br/
+        .form-group
+          = p.label :description
+          = p.text_field :description, class: "form-control description"
+          %br/
+        .form-group
+          = p.label :gender
+          = p.radio_button(:gender, "male")
+          = p.label(:gender, "male")
+          = p.radio_button(:gender, "female")
+          = p.label(:gender, "female")
+          %br/
+        .form-group
+          = p.label :bloodtype
+          = p.select :bloodtype, options_for_select(Patient::BLOODTYPE_OPTIONS, p.object.bloodtype), include_blank: "--- Select ---", class: "form-control blood-type"
+        %br
+        .checkbox
+          = hidden_field_tag 'patient[medication_ids][]', ''
+          - @medications.each do |med|
+            %label
+              = check_box_tag 'patient[medication_ids][]', med.id, @patient.medications.include?(med)
+              = med.medication_name
+        = p.submit "Submit", class: "btn btn-success disabled submit-stuff"
+        %br/
+        %br/
+        = link_to "Cancel", hospital_patients_path, class: "btn btn-danger"
 
 
 
