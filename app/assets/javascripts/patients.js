@@ -29,8 +29,6 @@ $(document).on('click', '.patientsearch-button', function(){
     dataType: 'script',
     data: {q: search}
   })
-  console.log(search);
-  console.log(hospital_id);
 });
 
 
