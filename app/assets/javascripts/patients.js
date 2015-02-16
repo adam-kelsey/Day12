@@ -20,6 +20,19 @@ $("ul.link_list > li > a").click(function() {
 })
 })
 
+$(document).on('click', '.patientsearch-button', function(){
+  hospital_id = $(".hospital-id").val()
+  var search = $(".patient-search").val()
+  $.ajax({
+    type: 'GET',
+    url: '/hospitals/' + hospital_id + '/patients/search_results',
+    dataType: 'script',
+    data: {q: search}
+  })
+  console.log(search);
+  console.log(hospital_id);
+});
+
 
 
 

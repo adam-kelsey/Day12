@@ -29,13 +29,6 @@ class Patient < ActiveRecord::Base
   has_many :patient_medications
   belongs_to :hospital
 
-    # :waiting_room_patient,
-    # :checkup_patient,
-    # :xray_patient,
-    # :surgery_patient,
-    # :bill_pay_patient,
-    # :discharge_patient
-
   include Workflow
   workflow do
     state :waiting_room do

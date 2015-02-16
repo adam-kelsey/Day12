@@ -18,7 +18,6 @@ class PatientsController < ApplicationController
       @patients = Patient.all
     end
     @hospital = Hospital.find params[:hospital_id]
-    # @patients = @hospital.patients
   end
 
   def new
@@ -97,6 +96,15 @@ class PatientsController < ApplicationController
   def discharge_patient
     @patient.leave!
     redirect_to hospital_patient_path
+  end
+
+  def search_results
+    @hospital = Hospital.find params[:hospital_id]
+    @patients = Patient.where("first_name LIKE ? OR last_name LIKE ? OR description LIKE ? OR dob LIKE ? OR gender LIKE ? OR bloodtype LIKE ? AND hospital_id = ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "params[:hospital_id")
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   private
