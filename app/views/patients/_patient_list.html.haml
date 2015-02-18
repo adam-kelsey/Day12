@@ -1,0 +1,18 @@
+.row
+- a = 0
+- b = 1
+%ul{class: "patient_list"}
+  - @patients.each_slice(10) do |row|
+    %li{class: "section_#{a+1}"}
+      - a = a + 1
+      - row.each do |patient|
+        .col-md-12
+          = link_to patient[:first_name], hospital_patient_path(@hospital, patient)
+          = patient.last_name
+          %br
+%ul{class: "link_list"}
+  - a.times do
+    %li{class: "link_#{b}"}
+      %a{class: "link_#{b}", number: b}
+        = "page #{b}"
+    - b += 1

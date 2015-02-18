@@ -31,8 +31,58 @@ $(document).on('click', '.patientsearch-button', function(){
   })
 });
 
+$(document).on('click', '.checkup-patient', function(){
+  hospital_id = $("#hospital_id").val()
+  patient_id = $("#patient_id").val()
+  $.ajax({
+    type: 'PATCH',
+    url: '/hospitals/' + hospital_id + '/patients/' + patient_id + '/checkup_patient'
+  })
+});
 
+$(document).on('click', '.xray-patient', function(){
+  hospital_id = $("#hospital_id").val()
+  patient_id = $("#patient_id").val()
+  $.ajax({
+    type: 'PATCH',
+    url: '/hospitals/' + hospital_id + '/patients/' + patient_id + '/xray_patient'
+  })
+});
 
+$(document).on('click', '.surgery-patient', function(){
+  hospital_id = $("#hospital_id").val()
+  patient_id = $("#patient_id").val()
+  $.ajax({
+    type: 'PATCH',
+    url: '/hospitals/' + hospital_id + '/patients/' + patient_id + '/surgery_patient'
+  })
+});
 
+$(document).on('click', '.discharge-patient', function(){
+  hospital_id = $("#hospital_id").val()
+  patient_id = $("#patient_id").val()
+  $.ajax({
+    type: 'PATCH',
+    url: '/hospitals/' + hospital_id + '/patients/' + patient_id + '/discharge_patient'
+  })
+});
+
+$(document).on('click', '.waitingroom-patient', function(){
+  hospital_id = $("#hospital_id").val()
+  patient_id = $("#patient_id").val()
+  $.ajax({
+    type: 'PATCH',
+    url: '/hospitals/' + hospital_id + '/patients/' + patient_id + '/waiting_room_patient'
+  })
+});
+
+$(document).on('click', '.billpay-patient', function(){
+  hospital_id = $("#hospital_id").val()
+  patient_id = $("#patient_id").val()
+  $.ajax({
+    type: 'PATCH',
+    url: '/hospitals/' + hospital_id + '/patients/' + patient_id + '/bill_pay_patient'
+  })
+});
 
 

@@ -1,0 +1,36 @@
+***
+= @patient.workflow_state.upcase
+***
+= @patient.first_name
+= @patient.last_name
+= @patient.dob
+= @patient.description
+= @patient.gender
+= @patient.bloodtype
+%br
+- @hospital = @patient.hospital
+- if @patient.waiting_room?
+  = link_to "Checkup", 'javascript:void(0);', class: "checkup-patient"
+  = link_to "Xray", 'javascript:void(0);', class: "xray-patient"
+  = link_to "Surgery", 'javascript:void(0);', class: "surgery-patient"
+  = link_to "Discharge", 'javascript:void(0);', class: "discharge-patient"
+- if @patient.checkup?
+  = link_to "Waiting Room", 'javascript:void(0);', class: "waitingroom-patient"
+  = link_to "Xray", 'javascript:void(0);', class: "xray-patient"
+  = link_to "Surgery", 'javascript:void(0);', class: "surgery-patient"
+  = link_to "Bill Pay", 'javascript:void(0);', class: "billpay-patient"
+  = link_to "Discharge", 'javascript:void(0);', class: "discharge-patient"
+- if @patient.xray?
+  = link_to "Waiting Room", 'javascript:void(0);', class: "waitingroom-patient"
+  = link_to "Checkup", 'javascript:void(0);', class: "checkup-patient"
+  = link_to "Surgery", 'javascript:void(0);', class: "surgery-patient"
+  = link_to "Bill Pay", 'javascript:void(0);', class: "billpay-patient"
+  = link_to "Discharge", 'javascript:void(0);', class: "discharge-patient"
+- if @patient.surgery?
+  = link_to "Waiting Room", 'javascript:void(0);', class: "waitingroom-patient"
+  = link_to "Checkup", 'javascript:void(0);', class: "checkup-patient"
+  = link_to "Xray", 'javascript:void(0);', class: "xray-patient"
+  = link_to "Bill Pay", 'javascript:void(0);', class: "billpay-patient"
+  = link_to "Discharge", 'javascript:void(0);', class: "discharge-patient"
+- if @patient.bill_pay?
+  = link_to "Discharge", 'javascript:void(0);', class: "discharge-patient"

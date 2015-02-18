@@ -12,11 +12,7 @@ class PatientsController < ApplicationController
     :discharge_patient
   ]
   def index
-    if !params[:q].blank?
-      @patients = Patient.where("first_name LIKE ? OR last_name LIKE ? OR description LIKE ? OR dob LIKE ? OR gender LIKE ? OR bloodtype LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
-    else
-      @patients = Patient.all
-    end
+    @patients = Patient.all
     @hospital = Hospital.find params[:hospital_id]
   end
 
@@ -70,32 +66,50 @@ class PatientsController < ApplicationController
 
   def waiting_room_patient
     @patient.wait!
-    redirect_to hospital_patient_path
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def checkup_patient
     @patient.exam!
-    redirect_to hospital_patient_path
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def xray_patient
     @patient.scan!
-    redirect_to hospital_patient_path
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def surgery_patient
     @patient.operation!
-    redirect_to hospital_patient_path
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def bill_pay_patient
     @patient.pay!
-    redirect_to hospital_patient_path
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def discharge_patient
     @patient.leave!
-    redirect_to hospital_patient_path
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def search_results
@@ -114,6 +128,7 @@ class PatientsController < ApplicationController
 
   def patient_params
     params.require(:patient).permit(
+      :id,
       :first_name,
       :last_name,
       :dob,

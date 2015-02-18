@@ -1,47 +1,16 @@
-/ PUT ALL THE WORKFLOW STATES IN A PARTIAL
+/ javascript void, class: "check-patient", patient_id: @patient_id
 
 .container
+  = hidden_field_tag 'patient_id', @patient.id
+  = hidden_field_tag 'hospital_id', @patient.hospital_id
   .row
     .col-md-6
     .col-md-6.patient-show
       %h1 Current Patient's Information
       %ul
         %li.patientsclass{ class: patient_current_state?(@patient)}
-          ***
-          = @patient.workflow_state.upcase
-          ***
-          = @patient.first_name
-          = @patient.last_name
-          = @patient.dob
-          = @patient.description
-          = @patient.gender
-          = @patient.bloodtype
-          %br
-          - if @patient.waiting_room?
-            = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Xray", xray_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
-          - if @patient.checkup?
-            = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Xray", xray_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
-          - if @patient.xray?
-            = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Surgery", surgery_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
-          - if @patient.surgery?
-            = link_to "Waiting Room", waiting_room_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Checkup", checkup_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Xray", xray_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Bill Pay", bill_pay_patient_hospital_patient_path(@hospital, @patient), method: :patch
-            = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
-          - if @patient.bill_pay?
-            = link_to "Discharge", discharge_patient_hospital_patient_path(@hospital, @patient), method: :patch
+          .some
+            =render 'workflow_patient'
       %br
       %br
       %ul
