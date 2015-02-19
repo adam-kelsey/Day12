@@ -25,7 +25,7 @@ class PatientsController < ApplicationController
 
   def create
     @hospital = Hospital.find params[:hospital_id]
-    @patient = @hospital.patients.create patient_params
+    @patient = @hospital.patients.new patient_params
     @medications = Medication.all
     if @patient.save
       flash[:notice] = 'Patient was successfully created'
