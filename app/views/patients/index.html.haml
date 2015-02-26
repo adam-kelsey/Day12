@@ -3,7 +3,7 @@
     .col-md-6
     .col-md-6.patient-index
       %input.patient-search{type: "text", placeholder: "Search Patients"}
-      %input.hospital-id{type:"hidden", name:"hospital_id", value: @patients.first.hospital_id}
+      %input.hospital-id{type:"hidden", name:"hospital_id", value: @hospital.id}
       %button.patientsearch-button Search
 
       %h1 List of Patients
