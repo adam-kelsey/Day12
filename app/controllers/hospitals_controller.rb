@@ -22,8 +22,8 @@ class HospitalsController < ApplicationController
 
   def create_rating
     @hospital = Hospital.find params[:id]
-    @rating = @doctor.ratings.create rating_params
-    redirect_to doctor_path(@doctor)
+    @rating = @hospital.ratings.create rating_params
+    redirect_to hospital_path(@hospital)
   end
 
   def show

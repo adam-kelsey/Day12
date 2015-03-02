@@ -13,6 +13,10 @@
       = link_to "Delete", hospital_path(@hospital), method: :delete, class: "btn btn-danger"
       %br/
       %br
+      - @ratings.each do |r|
+        = r.score
+        = r.comment
+        %br
       = form_for @rating, url: create_rating_hospital_path(@hospital) do |f|
         = f.label :score
         = f.text_field :score
