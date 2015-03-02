@@ -129,12 +129,16 @@ describe HospitalsController do
   end
 
 
-
-
-
-
-
-
+  describe 'DELETE #destroy' do
+    it 'should delete a hospital' do
+      hospital
+      expect{
+        delete :destroy, id: hospital
+      }
+      .to change(Hospital, :count).by(-1)
+      expect(response).to redirect_to root_path
+    end
+  end
 
 
 end
