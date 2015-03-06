@@ -24,8 +24,6 @@ describe HospitalsController do
       expect(assigns(:hospitals)).to eq([hospital3])
     end
 
-    #when doing q: 'A', test will not pass unless all hospitals in !let begin with A. When attempted with names of hospitals being "Hello, Allo, and Arctic", test failed. To use .include all hospitals must have same "variable" in common?
-
     it 'should return all 3 hospitals' do
       get :index, q: 'A'
       expect(assigns(:hospitals)).not_to eq(nil)
