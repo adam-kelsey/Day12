@@ -1,26 +1,26 @@
 %div.row
   %h4.sidebar
 
-    = form_tag doctors_path, method: :get, class: "navbar-form", role: "search" do
+    = form_tag search_medications_path, method: :get, class: "navbar-form", role: "search" do
       .input-group
-        = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Doctors"
+        = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Anything"
         .input-group-btn
           %button.btn.btn-default{:style => "width:40px;"}
             %i.glyphicon.glyphicon-search
 
-    = form_tag hospitals_path, method: :get, class: "navbar-form", role: "search" do
-      .input-group
-        = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Hospitals"
-        .input-group-btn
-          %button.btn.btn-default{:style => "width:40px;"}
-            %i.glyphicon.glyphicon-search
+    / = form_tag hospitals_path, method: :get, class: "navbar-form", role: "search" do
+    /   .input-group
+    /     = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Hospitals"
+    /     .input-group-btn
+    /       %button.btn.btn-default{:style => "width:40px;"}
+    /         %i.glyphicon.glyphicon-search
 
-    = form_tag medications_path, method: :get, class: "navbar-form", role: "search" do
-      .input-group
-        = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Medications"
-        .input-group-btn
-          %button.btn.btn-default{:style => "width:40px;"}
-            %i.glyphicon.glyphicon-search
+    / = form_tag medications_path, method: :get, class: "navbar-form", role: "search" do
+    /   .input-group
+    /     = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Medications"
+    /     .input-group-btn
+    /       %button.btn.btn-default{:style => "width:40px;"}
+    /         %i.glyphicon.glyphicon-search
 
 / = form_tag hospital_patients_path(@hospital), method: :get, class: "navbar-form", role: "search" do
 /   .input-group

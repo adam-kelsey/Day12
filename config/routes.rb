@@ -8,11 +8,17 @@ Rails.application.routes.draw do
     member do
       post :create_rating
     end
+    collection do
+      get :search
+    end
   end
 
   resources :hospitals do
     member do
       post :create_rating
+    end
+    collection do
+      get :search
     end
 
     resources :patients do
@@ -25,12 +31,16 @@ Rails.application.routes.draw do
         patch :discharge_patient
       end
       collection do
-        get :search_results
+        get :search
       end
     end
   end
 
-  resources :medications
+  resources :medications do
+    collection do
+      get :search
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

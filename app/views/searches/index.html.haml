@@ -1,0 +1,6 @@
+/ = form_tag search_medications_path, method: :get, class: "navbar-form", role: "search" do
+/   .input-group
+/     = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search Anything"
+/     .input-group-btn
+/       %button.btn.btn-default{:style => "width:40px;"}
+/         %i.glyphicon.glyphicon-search
