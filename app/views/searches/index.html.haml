@@ -9,10 +9,13 @@
   = h.hospital_name
 
 - @patients.each do |p|
-  = p.first_name
-  = p.last_name
-  = p.dob
-  = p.description
-  = p.gender
-  = p.bloodtype
-  = p.medication_ids
+  %div= p.first_name
+  %div= p.last_name
+  %div= p.dob
+  %div= p.description
+  %div= p.gender
+  %div= p.bloodtype
+  / - @patient.medications.each do |e|
+  /   %li
+  /     =e.medication_name
+  /     =e.medication_dosage
