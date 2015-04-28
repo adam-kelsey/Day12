@@ -1,21 +1,24 @@
-- @doctors.each do |d|
-  %div= d.name
-  %div= d.practice
+.container
+  .row
+    .col-md-6
+    .col-md-6-searches-index
+      - @doctors.each do |d|
+        %div= d.name
+        %div= d.practice
 
-- @medications.each do |m|
-  = m.medication_name
+      - @medications.each do |m|
+        = m.medication_name
 
-- @hospitals.each do |h|
-  = h.hospital_name
+      - @hospitals.each do |h|
+        = h.hospital_name
 
-- @patients.each do |p|
-  %div= p.first_name
-  %div= p.last_name
-  %div= p.dob
-  %div= p.description
-  %div= p.gender
-  %div= p.bloodtype
-  / - @patient.medications.each do |e|
-  /   %li
-  /     =e.medication_name
-  /     =e.medication_dosage
+      - @patients.each do |p|
+        %div= p.first_name
+        %div= p.last_name
+        %div= p.dob
+        %div= p.description
+        %div= p.gender
+        %div= p.bloodtype
+        - p.medications.each do |e|
+          =e.medication_name
+          =e.medication_dosage

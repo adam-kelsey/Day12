@@ -207,3 +207,19 @@
   top: 0px;
   right: 10px;
 }
+
+.searches-index {
+  border: solid 1px #CCCCCC;
+  background-color: darkgrey;
+  /*background-color: #f9f9f9;*/
+  display: table;
+  padding: 4px;
+  margin: 4px 4px 0px 4px;
+  font-size: 110%;
+  color: crimson;
+  font-family: sans-serif;
+  font-style: italic;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
